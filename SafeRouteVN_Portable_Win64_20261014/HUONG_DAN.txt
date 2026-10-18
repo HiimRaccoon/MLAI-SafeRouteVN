@@ -1,0 +1,20 @@
+﻿SAFEROUTE PORTABLE - WINDOWS 10/11 64-BIT
+
+1. Giải nén TOÀN BỘ file ZIP vào thư mục có quyền ghi.
+2. Bấm đúp CHAY_SAFEROUTE.bat. Không cần cài Python, Node.js hoặc thư viện.
+3. Đợi dòng READY; trình duyệt sẽ tự mở. Lần đầu cần kiểm tra dữ liệu và solver.
+4. Đóng cửa sổ launcher hoặc chạy DON_PORT_SAFEROUTE.bat để dừng.
+
+Không chạy file BAT trực tiếp bên trong cửa sổ xem ZIP.
+Giữ nguyên các thư mục sau khi giải nén. Không di chuyển khi app đang chạy.
+Tối ưu tuyến chạy local; nền bản đồ cần internet để tải tile.
+Chức năng Fetch weather & prepare session cần internet để lấy weather mới.
+Kịch bản mẫu S0-S8 có sẵn; không cần tải lại dữ liệu đường để Optimize.
+Phiên weather mới hỗ trợ S0-S4, hiển thị context và có nút Hủy phiên.
+Trước Optimize, thao tác Demo tools sẽ chuyển về scenario thường.
+Lần đầu nên thử: Demo tools -> S0 -> Optimize -> chọn phương án -> Accept.
+Mỗi lần tạo dữ liệu weather mới có thể dùng thêm khoảng 1 GB dung lượng.
+Giao thông là ước lượng; chuyển động xe là mô phỏng, không phải GPS live.
+Windows có thể hỏi Run vì file BAT chưa có chữ ký nhà phát hành.
+Di chuyển thư mục sẽ tạo phiên cài mới; dữ liệu cũ được giữ trong portable-state.
+Nếu gửi tiếp cho người khác, gửi ZIP gốc để không kèm dữ liệu phiên/token của bạn.

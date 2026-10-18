@@ -1,0 +1,30 @@
+.delivery-day-panel { font-size: 12px; overflow-wrap: anywhere; }
+.delivery-day-panel h3 { margin: 0 0 10px; font-size: 16px; }
+.delivery-day-panel h4 { margin: 16px 0 8px; }
+.delivery-day-panel details { padding: 10px 0; border-top: 1px solid #e2e8f0; }
+.delivery-day-panel summary { cursor: pointer; font-weight: 600; }
+.delivery-day-panel form { display: grid; gap: 8px; margin: 10px 0; }
+.delivery-day-panel label { display: block; margin: 6px 0; }
+.delivery-day-panel input:not([type=checkbox]), .delivery-day-panel select {
+  width: 100%; min-width: 0; box-sizing: border-box; padding: 7px 8px;
+  border: 1px solid #cbd5e1; border-radius: 6px; background: white; font: inherit;
+}
+.delivery-day-panel button {
+  padding: 7px 10px; border: 1px solid #cbd5e1; border-radius: 6px;
+  background: #eef4ff; color: #244877; font: inherit; cursor: pointer; margin: 3px 3px 3px 0;
+}
+.delivery-day-panel button:disabled { opacity: .5; cursor: default; }
+.delivery-day-panel progress { width: 100%; accent-color: #2563eb; }
+.admin-controls { position: relative; }
+.admin-controls > summary { list-style: none; cursor: pointer; }
+.admin-controls > summary::-webkit-details-marker { display: none; }
+.admin-controls-menu { position: absolute; top: calc(100% + 8px); right: 0; z-index: 1200; width: 270px; padding: 14px; background: white; border: 1px solid #dbe3ef; border-radius: 12px; box-shadow: 0 8px 28px #19345224; display: grid; gap: 10px; }
+.admin-controls-menu button { padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 7px; background: #f4f7fc; cursor: pointer; text-align: left; }
+.admin-controls-menu button:disabled { opacity: .5; cursor: default; }
+.admin-controls-menu p { font-size: 12px; line-height: 1.5; margin: 0; color: #64748b; }
+.admin-controls-menu label { display: flex; align-items: center; gap: 8px; }
+.admin-center .panel.comparison.delivery-comparison { height: auto; max-height: none; }
+.delivery-comparison h3 { font-size: 16px; margin: 0 0 6px; }
+.delivery-comparison p { font-size: 12px; line-height: 1.5; margin: 4px 0; }
+.delivery-comparison .comparison-table-wrapper { flex: 0 0 auto; }
+.delivery-comparison .comparison-table th, .delivery-comparison .comparison-table td { padding: 7px 10px; }

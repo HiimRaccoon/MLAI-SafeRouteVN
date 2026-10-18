@@ -1,0 +1,144 @@
+{
+  "S0": {
+    "catalog_sha256": "8268f653b1bd355672ba094537771206b61c1807e8e83dbdb074ae4ff9ea293a",
+    "context_version": "4038941ccdf51d04d471e31050e5c58da2cf50c089e6a681fd558e1c0f9e17b9",
+    "decision_epoch": "2026-09-27T21:00:00+07:00",
+    "delivery_area_version": "c40e649953198aca89d80888951355ff35d14299b9c745202da956810d212049",
+    "features_version": "2446e25826b74f752424f5b2bd82f8a6e2c5358ebcbc2c939e7a024b0fabd4ec",
+    "fixture_sha256": "e981e7d8f120fb75ae4390e99757583690548256deb288821f74eee6e35f04f7",
+    "order_ids": [
+      "O001",
+      "O002",
+      "O003"
+    ],
+    "pending_event_epochs": {},
+    "pending_event_ids": [],
+    "receipt_sha256": "2fbd98425fb73dca87973429de1ef712414d0a32161f89435ae23a69497cc52e",
+    "routing_version": "215fc867426fef6742fd40606e0e5dd72a719f821c310a07442cd0ed42e06acb",
+    "scenario_id": "S0",
+    "source_run": "cached_context/hcmc/member1-tdbt-v1",
+    "state_id": "m1/thu-duc-binh-thanh-v1/S0/initial-v1",
+    "state_version": 1,
+    "suite_id": "thu-duc-binh-thanh-v1"
+  },
+  "S1": {
+    "catalog_sha256": "8268f653b1bd355672ba094537771206b61c1807e8e83dbdb074ae4ff9ea293a",
+    "context_version": "4038941ccdf51d04d471e31050e5c58da2cf50c089e6a681fd558e1c0f9e17b9",
+    "decision_epoch": "2026-09-27T21:00:00+07:00",
+    "delivery_area_version": "c40e649953198aca89d80888951355ff35d14299b9c745202da956810d212049",
+    "features_version": "2446e25826b74f752424f5b2bd82f8a6e2c5358ebcbc2c939e7a024b0fabd4ec",
+    "fixture_sha256": "9d90a0f0d408449ed03ead415a2d55499db460d1380b3cc726899138c68b6196",
+    "order_ids": [
+      "O001",
+      "O002",
+      "O003",
+      "O004",
+      "O005",
+      "O006",
+      "O007",
+      "O008"
+    ],
+    "pending_event_epochs": {},
+    "pending_event_ids": [],
+    "receipt_sha256": "2fbd98425fb73dca87973429de1ef712414d0a32161f89435ae23a69497cc52e",
+    "routing_version": "215fc867426fef6742fd40606e0e5dd72a719f821c310a07442cd0ed42e06acb",
+    "scenario_id": "S1",
+    "source_run": "cached_context/hcmc/member1-tdbt-v1",
+    "state_id": "m1/thu-duc-binh-thanh-v1/S1/initial-v1",
+    "state_version": 1,
+    "suite_id": "thu-duc-binh-thanh-v1"
+  },
+  "S2": {
+    "catalog_sha256": "8268f653b1bd355672ba094537771206b61c1807e8e83dbdb074ae4ff9ea293a",
+    "context_version": "4038941ccdf51d04d471e31050e5c58da2cf50c089e6a681fd558e1c0f9e17b9",
+    "decision_epoch": "2026-09-27T21:00:00+07:00",
+    "delivery_area_version": "c40e649953198aca89d80888951355ff35d14299b9c745202da956810d212049",
+    "features_version": "2446e25826b74f752424f5b2bd82f8a6e2c5358ebcbc2c939e7a024b0fabd4ec",
+    "fixture_sha256": "8a448c6805ed4e3a5a8d19aad8479c3a6b3030edd3fcff280b9073215e67565b",
+    "order_ids": [
+      "O001",
+      "O002",
+      "O003",
+      "O004",
+      "O005",
+      "O006",
+      "O007",
+      "O008"
+    ],
+    "pending_event_epochs": {
+      "S2-E1": "2026-09-27T21:15:00+07:00"
+    },
+    "pending_event_ids": [
+      "S2-E1"
+    ],
+    "receipt_sha256": "2fbd98425fb73dca87973429de1ef712414d0a32161f89435ae23a69497cc52e",
+    "routing_version": "215fc867426fef6742fd40606e0e5dd72a719f821c310a07442cd0ed42e06acb",
+    "scenario_id": "S2",
+    "source_run": "cached_context/hcmc/member1-tdbt-v1",
+    "state_id": "m1/thu-duc-binh-thanh-v1/S2/initial-v1",
+    "state_version": 1,
+    "suite_id": "thu-duc-binh-thanh-v1"
+  },
+  "S3": {
+    "catalog_sha256": "8268f653b1bd355672ba094537771206b61c1807e8e83dbdb074ae4ff9ea293a",
+    "context_version": "4038941ccdf51d04d471e31050e5c58da2cf50c089e6a681fd558e1c0f9e17b9",
+    "decision_epoch": "2026-09-27T21:00:00+07:00",
+    "delivery_area_version": "c40e649953198aca89d80888951355ff35d14299b9c745202da956810d212049",
+    "features_version": "2446e25826b74f752424f5b2bd82f8a6e2c5358ebcbc2c939e7a024b0fabd4ec",
+    "fixture_sha256": "654ee6f49f05cf68863a226b8cae14d1d95470c03306949a02d84305518d5bd3",
+    "order_ids": [
+      "O001",
+      "O002",
+      "O003",
+      "O004",
+      "O005",
+      "O006",
+      "O007",
+      "O008"
+    ],
+    "pending_event_epochs": {
+      "S3-E1": "2026-09-27T21:15:00+07:00"
+    },
+    "pending_event_ids": [
+      "S3-E1"
+    ],
+    "receipt_sha256": "2fbd98425fb73dca87973429de1ef712414d0a32161f89435ae23a69497cc52e",
+    "routing_version": "215fc867426fef6742fd40606e0e5dd72a719f821c310a07442cd0ed42e06acb",
+    "scenario_id": "S3",
+    "source_run": "cached_context/hcmc/member1-tdbt-v1",
+    "state_id": "m1/thu-duc-binh-thanh-v1/S3/initial-v1",
+    "state_version": 1,
+    "suite_id": "thu-duc-binh-thanh-v1"
+  },
+  "S4": {
+    "catalog_sha256": "8268f653b1bd355672ba094537771206b61c1807e8e83dbdb074ae4ff9ea293a",
+    "context_version": "4038941ccdf51d04d471e31050e5c58da2cf50c089e6a681fd558e1c0f9e17b9",
+    "decision_epoch": "2026-09-27T21:00:00+07:00",
+    "delivery_area_version": "c40e649953198aca89d80888951355ff35d14299b9c745202da956810d212049",
+    "features_version": "2446e25826b74f752424f5b2bd82f8a6e2c5358ebcbc2c939e7a024b0fabd4ec",
+    "fixture_sha256": "34b100c4018e4b33aa11d4f49ee2234fb41dedafe305da1f9e3e6db881c94517",
+    "order_ids": [
+      "O001",
+      "O002",
+      "O003",
+      "O004",
+      "O005",
+      "O006",
+      "O007",
+      "O008"
+    ],
+    "pending_event_epochs": {
+      "S4-E1": "2026-09-27T21:15:00+07:00"
+    },
+    "pending_event_ids": [
+      "S4-E1"
+    ],
+    "receipt_sha256": "2fbd98425fb73dca87973429de1ef712414d0a32161f89435ae23a69497cc52e",
+    "routing_version": "215fc867426fef6742fd40606e0e5dd72a719f821c310a07442cd0ed42e06acb",
+    "scenario_id": "S4",
+    "source_run": "cached_context/hcmc/member1-tdbt-v1",
+    "state_id": "m1/thu-duc-binh-thanh-v1/S4/initial-v1",
+    "state_version": 1,
+    "suite_id": "thu-duc-binh-thanh-v1"
+  }
+}

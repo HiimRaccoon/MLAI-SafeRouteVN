@@ -1,0 +1,56 @@
+// Headless UI check against the local launcher; uses a fresh browser profile.
+import puppeteer from 'puppeteer-core';
+import {mkdir,readFile,writeFile} from 'node:fs/promises';
+import {resolve} from 'node:path';
+const origin=process.argv[2] || 'http://127.0.0.1:5185';
+const output=resolve(process.argv[3] || '../outputs/import-explain-ui');
+await mkdir(output,{recursive:true});
+const fixture=JSON.parse(await readFile(new URL('../../scenarios/fixtures/thu-duc-binh-thanh-v1/S0.json',import.meta.url),'utf8'));
+fixture.initialState.orders[0].demandKg=2.6;
+await writeFile(resolve(output,'import-example.json'),JSON.stringify(fixture));
+await writeFile(resolve(output,'invalid.json'),JSON.stringify({initialState:{orders:[]}}));
+const report={status:'RUNNING',origin,errors:[]};
+const browser=await puppeteer.launch({headless:true,pipe:true,timeout:60000,userDataDir:resolve(output,'browser-profile'),executablePath:process.env.SAFEROUTE_BROWSER || 'C:/Program Files/Google/Chrome/Application/chrome.exe'});
+try {
+  const page=await browser.newPage();await page.setViewport({width:1920,height:1200});page.setDefaultTimeout(240000);
+  await page.setRequestInterception(true);
+  page.on('request',r=>new URL(r.url()).hostname==='127.0.0.1' || r.url().startsWith('data:') || r.url().startsWith('blob:') ? r.continue() : r.abort());
+  page.on('pageerror',e=>report.errors.push(e.message));
+  let explanationReads=0,ready=false;
+  page.on('response',async r=>{if(r.url().endsWith('/explanations')&&r.ok()){explanationReads++;try{ready=(await r.json()).data.status==='READY';}catch{}}});
+  await page.goto(origin+'/admin',{waitUntil:'domcontentloaded'});await page.waitForSelector('.admin-page');
+  await page.waitForSelector('[aria-label="Import scenario"] input[type=file]');
+  const initial=await page.$eval('.admin-page',e=>e.dataset.sessionId);
+  const input=await page.$('[aria-label="Import scenario"] input[type=file]');
+  await input.uploadFile(resolve(output,'invalid.json'));
+  await page.waitForSelector('[aria-label="Import scenario"] [role=alert]');
+  if(await page.$eval('.admin-page',e=>e.dataset.sessionId)!==initial)throw new Error('Invalid import changed session');
+  report.invalid_import_preserves_session=true;
+  await page.waitForFunction(()=>!document.querySelector('[aria-label="Import scenario"] input').disabled);
+  await input.uploadFile(resolve(output,'import-example.json'));
+  await page.waitForFunction(()=>!!document.querySelector('[aria-label="Scenario đã import"]').value);
+  const imported=await page.$eval('[aria-label="Scenario đã import"]',e=>e.value);report.run_id=imported;
+  await page.evaluate(()=>[...document.querySelectorAll('button')].find(b=>b.textContent==='Mở scenario đã import').click());
+  await page.waitForFunction(sid=>document.querySelector('.admin-page')?.dataset.sessionId!==sid,{},initial);
+  await page.waitForFunction(()=>!document.querySelector('.cta-optimize')?.disabled);
+  await page.click('.cta-optimize');
+  await page.waitForFunction(()=>[...document.querySelectorAll('.alt-view-btn')].filter(b=>!b.disabled).length===3);
+  await page.click('[aria-label="Select SAFER"]');
+  await page.waitForSelector('[aria-label="Giải thích SAFER"]');
+  await page.waitForFunction(()=>document.querySelector('.selected-explanation')?.textContent.includes('qwen3:4b'),{timeout:150000});
+  const reads=explanationReads,started=performance.now();
+  await page.click('[aria-label="Select FASTEST"]');
+  await page.waitForSelector('[aria-label="Giải thích FASTEST"]');
+  report.switch_ms=performance.now()-started;
+  if(await page.$('[aria-label="Giải thích SAFER"]'))throw new Error('Previous explanation retained');
+  if(explanationReads!==reads)throw new Error('Switch made an unnecessary explanation request');
+  report.llm_ready=ready;report.switch_without_request=true;
+  await page.screenshot({path:resolve(output,'selected-fastest.png'),fullPage:true});
+  await page.reload({waitUntil:'domcontentloaded'});await page.waitForSelector('[aria-label="Giải thích FASTEST"]');
+  await page.waitForFunction(id=>[...document.querySelectorAll('[aria-label="Scenario đã import"] option')].some(o=>o.value===id),{},imported);
+  await page.waitForFunction(()=>document.querySelector('.selected-explanation')?.textContent.includes('qwen3:4b'));
+  report.reload_preserves_import_and_cache=true;
+  if(report.errors.length)throw new Error(report.errors.join(';'));
+  report.status='PASS';console.log(JSON.stringify(report));
+}catch(error){report.status='FAIL';report.failure=String(error);throw error;}
+finally{await writeFile(resolve(output,'result.json'),JSON.stringify(report,null,2));await browser.close();}

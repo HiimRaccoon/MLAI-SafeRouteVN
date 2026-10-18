@@ -1,0 +1,1 @@
+import{t as e}from"./index-xHloW7mp.js";function t(){throw new e(`This backend build has no offline demo. Use npm run dev:mock or npm run build:mock for explicit mock mode.`)}export{t as createMockDispatchApi};

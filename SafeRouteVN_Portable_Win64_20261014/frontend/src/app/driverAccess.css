@@ -1,0 +1,32 @@
+.driver-access-page { min-height: 100dvh; display: grid; place-items: center; padding: 24px; background: #eef4f8; color: #17304a; }
+.driver-access-card { width: min(100%, 420px); display: grid; gap: 16px; padding: 32px; background: #fff; border-radius: 20px; box-shadow: 0 12px 40px #17304a12; }
+.driver-access-card h1, .driver-access-card p { margin: 0; }
+.driver-access-brand { font-weight: 800; color: #087e8b; }
+.driver-access-card input { box-sizing: border-box; width: 100%; padding: 14px; border: 1px solid #b9cbd8; border-radius: 10px; font: inherit; }
+.driver-access-card button { padding: 14px; background: #087e8b; color: white; border: none; border-radius: 10px; font: inherit; cursor: pointer; }
+.driver-access-card button:disabled { opacity: .6; cursor: wait; }
+.driver-access-card small { line-height: 1.5; color: #546575; }
+.driver-access-error { color: #b42318; overflow-wrap: anywhere; }
+.driver-access-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 16px; background: #17304a; color: white; font-size: 14px; }
+.driver-access-bar button { padding: 6px 12px; border-radius: 6px; border: 1px solid #ffffff80; background: transparent; color: white; cursor: pointer; }
+.driver-access-page { box-sizing: border-box; min-height: 100dvh; padding: 24px 20px; }
+.driver-access-card { box-sizing: border-box; }
+.driver-access-card input:focus-visible { outline: 3px solid #087e8b30; border-color: #087e8b; }
+.driver-access-card button { min-height: 48px; font-weight: 650; }
+.driver-access-workspace { height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
+.driver-access-workspace > .driver-access-bar { flex-shrink: 0; }
+.driver-access-bar [role="status"] { flex: 1; min-width: 0; font-size: 12px; line-height: 1.35; }
+.driver-access-bar button { flex-shrink: 0; }
+.driver-access-bar { flex-wrap: wrap; }
+@media (max-width: 480px) {
+  .driver-access-bar { gap: 6px 10px; padding: 6px 10px; }
+  .driver-access-bar [role="status"] { order: 1; flex-basis: 100%; }
+  .driver-access-bar > span:first-child { margin-right: auto; }
+  .driver-access-bar button { min-height: 40px; }
+}
+.driver-access-workspace .drv-page { flex: 1; min-height: 0; padding: 0; overflow: hidden; }
+.driver-access-workspace .drv-shell { min-height: 0; height: 100%; max-width: none; border: 0; border-radius: 0; padding-bottom: 0; box-shadow: none; }
+.driver-access-workspace .drv-status-bar { display: none; }
+.driver-access-workspace .drv-bottom-nav { position: static; flex-shrink: 0; box-sizing: border-box; }
+.driver-access-workspace .drv-header, .driver-access-workspace .drv-tabs, .driver-access-workspace .drv-settings-row { flex-shrink: 0; }
+.driver-access-workspace .drv-content-scroll { min-height: 0; }

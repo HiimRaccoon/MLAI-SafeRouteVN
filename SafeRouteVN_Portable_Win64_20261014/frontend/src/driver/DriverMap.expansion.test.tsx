@@ -1,0 +1,22 @@
+import { render, screen, fireEvent } from '@testing-library/react';
+import { expect, it, vi } from 'vitest';
+import { DispatchProvider } from '../app/DispatchContext';
+import { MockStateEngine } from '../mocks/engine/MockStateEngine';
+import { DriverPage } from './DriverPage';
+import type { DispatchApi } from '../services/api/DispatchApi';
+vi.mock('../shared/components/LeafletCanvas', () => ({LeafletCanvas: () => <div>Map surface</div>}));
+it('expands the map but leaves navigation usable and restores details on collapse', async () => {
+  const engine = new MockStateEngine();
+  const api = { getSnapshot: async () => engine.getSnapshot(), subscribe: () => () => {} } as DispatchApi;
+  render(<DispatchProvider api={api}><DriverPage /></DispatchProvider>);
+  const expand = await screen.findByRole('button', {name:'Mở rộng bản đồ'});
+  fireEvent.click(expand);
+  expect(screen.getByRole('button', {name:'Thu nhỏ bản đồ'})).toHaveAttribute('aria-expanded','true');
+  expect(document.querySelector('.drv-page')).toHaveClass('drv-page--map-expanded');
+  expect(screen.getByRole('navigation', {name:'Main navigation'})).toBeVisible();
+  fireEvent.click(screen.getByRole('tab', {name:'My Orders'}));
+  expect(document.querySelector('.drv-page')).not.toHaveClass('drv-page--map-expanded');
+  fireEvent.click(screen.getByRole('tab', {name:'Route'}));
+  fireEvent.click(screen.getByRole('button', {name:'Thu nhỏ bản đồ'}));
+  expect(screen.getByRole('button', {name:'Mở rộng bản đồ'})).toHaveAttribute('aria-expanded','false');
+});

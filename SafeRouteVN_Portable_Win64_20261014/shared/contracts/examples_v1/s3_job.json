@@ -1,0 +1,76 @@
+{
+  "decision": {
+    "context_version": "4038941ccdf51d04d471e31050e5c58da2cf50c089e6a681fd558e1c0f9e17b9",
+    "coverage_evaluated": false,
+    "decision_epoch": "2026-09-27T21:15:00+07:00",
+    "derived_from": {
+      "artifact": "outputs/member1_decision_state/M1_STATE_20260929T205037621762Z/event_rejections.json",
+      "artifact_sha256": "bdf94a2292bbb481dc8af79b4d915d7a369189c8897d971933cf0b2e41c8e53e",
+      "kind": "ADAPTER_REJECTION_PROJECTION",
+      "manifest_sha256": "ecea384ab8867d6465c7248cc5a70578050d4f2253fef2c3d8be5b3852926b31",
+      "run_id": "M1_STATE_20260929T205037621762Z"
+    },
+    "diagnostics": [
+      {
+        "code": "CUSTODY_POLICY_MISSING",
+        "message": "unavailable vehicle carrying cargo has no approved custody/transfer policy",
+        "path": "pending_events.S3-E1",
+        "severity": "ERROR"
+      }
+    ],
+    "event_id": "S3-E1",
+    "order_ids": [
+      "O001",
+      "O002",
+      "O003",
+      "O004",
+      "O005",
+      "O006",
+      "O007",
+      "O008"
+    ],
+    "plan": null,
+    "post_event_state": null,
+    "run_id": "CONTRACT_EXAMPLE_S3_S3-E1",
+    "scenario_id": "S3",
+    "schema_version": "task02-m2-m3m4-decision/1",
+    "search": null,
+    "served_orders": [],
+    "source": {
+      "catalog_sha256": "8268f653b1bd355672ba094537771206b61c1807e8e83dbdb074ae4ff9ea293a",
+      "delivery_area_version": "c40e649953198aca89d80888951355ff35d14299b9c745202da956810d212049",
+      "features_version": "2446e25826b74f752424f5b2bd82f8a6e2c5358ebcbc2c939e7a024b0fabd4ec",
+      "fixture_sha256": "654ee6f49f05cf68863a226b8cae14d1d95470c03306949a02d84305518d5bd3",
+      "receipt_sha256": "2fbd98425fb73dca87973429de1ef712414d0a32161f89435ae23a69497cc52e",
+      "routing_version": "215fc867426fef6742fd40606e0e5dd72a719f821c310a07442cd0ed42e06acb",
+      "source_gate": "M1_SOURCE_CONTRACT_GATE_PASS",
+      "source_run": "cached_context/hcmc/member1-tdbt-v1",
+      "suite_id": "thu-duc-binh-thanh-v1"
+    },
+    "state_version": 1,
+    "status": "UNSUPPORTED",
+    "units": {
+      "cost": "VND",
+      "cost_rate": "VND/km",
+      "distance": "meter",
+      "duration": "second",
+      "exposure_semantic": "relative_exposure_proxy",
+      "geometry_crs": "WGS84",
+      "geometry_order": "longitude_latitude",
+      "mass": "kg"
+    },
+    "unserved_orders": [],
+    "validation": {
+      "gate": null,
+      "status": "NOT_RUN",
+      "valid": null,
+      "validator_version": null
+    }
+  },
+  "failure": null,
+  "job_status": "COMPLETED",
+  "kind": "DECISION_JOB",
+  "request_id": "example-s3-s3-e1",
+  "run_id": "CONTRACT_EXAMPLE_S3_S3-E1",
+  "schema_version": "task02-m2-m3m4-job/1"
+}

@@ -1,0 +1,14 @@
+{
+  "decision_epoch": "2026-09-27T21:00:00+07:00",
+  "event_id": null,
+  "expected_context_version": "4038941ccdf51d04d471e31050e5c58da2cf50c089e6a681fd558e1c0f9e17b9",
+  "expected_state_version": 1,
+  "kind": "DECISION_REQUEST",
+  "request_id": "example-s1-initial",
+  "scenario_id": "S1",
+  "schema_version": "task02-m2-m3m4-request/1",
+  "state_ref": {
+    "kind": "SERVER_MANAGED",
+    "state_id": "m1/thu-duc-binh-thanh-v1/S1/initial-v1"
+  }
+}

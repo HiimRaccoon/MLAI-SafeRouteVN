@@ -1,0 +1,271 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:saferoute:task02-m2-runtime-command:1",
+  "description": "Supplemental runtime command. Server config and persisted trust are never client fields. Release readiness is separately evidence-gated.",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "counter": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)$",
+      "maxLength": 19
+    },
+    "instant": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d(\\.\\d{1,6})?\\+07:00$"
+    },
+    "basis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "root_sha256",
+        "head_sha256",
+        "head_version",
+        "generation",
+        "source_sha256",
+        "context_version",
+        "overlay_sha256",
+        "build_sha256"
+      ],
+      "properties": {
+        "session_id": {
+          "$ref": "#/$defs/id"
+        },
+        "root_sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "head_sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "head_version": {
+          "$ref": "#/$defs/counter"
+        },
+        "generation": {
+          "$ref": "#/$defs/counter"
+        },
+        "source_sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "context_version": {
+          "$ref": "#/$defs/id"
+        },
+        "overlay_sha256": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/digest"
+            }
+          ]
+        },
+        "build_sha256": {
+          "$ref": "#/$defs/digest"
+        }
+      }
+    },
+    "command": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "operation",
+        "command_id"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "task02-m2-runtime-command/1"
+        },
+        "operation": {
+          "enum": [
+            "capabilities",
+            "bootstrap",
+            "resolve",
+            "submit",
+            "compute",
+            "get_job",
+            "cancel",
+            "apply_event",
+            "accept",
+            "advance",
+            "get_head",
+            "recover",
+            "dispatch"
+          ]
+        },
+        "command_id": {
+          "$ref": "#/$defs/id"
+        },
+        "session_id": {
+          "$ref": "#/$defs/id"
+        },
+        "scenario_id": {
+          "enum": [
+            "S0",
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8"
+          ]
+        },
+        "job_id": {
+          "$ref": "#/$defs/id"
+        },
+        "basis": {
+          "$ref": "#/$defs/basis"
+        },
+        "profile": {
+          "enum": [
+            "FASTEST",
+            "BALANCED",
+            "SAFER"
+          ]
+        },
+        "event_id": {
+          "$ref": "#/$defs/id"
+        },
+        "target_time": {
+          "$ref": "#/$defs/instant"
+        },
+        "budget_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 600
+        },
+        "action": {
+          "$ref": "#/$defs/id"
+        },
+        "data": {
+          "type": "object"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "operation": {
+                "not": {
+                  "const": "capabilities"
+                }
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "session_id"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "operation": {
+                "const": "bootstrap"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "scenario_id"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "operation": {
+                "enum": [
+                  "compute",
+                  "get_job",
+                  "cancel",
+                  "accept"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "job_id"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "operation": {
+                "enum": [
+                  "submit",
+                  "accept",
+                  "advance",
+                  "apply_event"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "basis"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "operation": {
+                "const": "advance"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "target_time"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "operation": {
+                "const": "apply_event"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "event_id"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "operation": {
+                "const": "dispatch"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "basis",
+              "action",
+              "data"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "$ref": "#/$defs/command"
+}

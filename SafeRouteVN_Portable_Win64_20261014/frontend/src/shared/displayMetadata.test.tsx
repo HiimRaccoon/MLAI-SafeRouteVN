@@ -1,0 +1,33 @@
+import {expect,it} from 'vitest';
+import {render,screen} from '@testing-library/react';
+import {orderDisplay,vehicleDisplay} from './displayMetadata';
+import {mapM3World} from '../integrations/member3/worldState';
+import {acceptedView} from '../integrations/member3/acceptedTestFixture';
+import {dispatchPresentation} from './presentation';
+import {OrderQueueItem} from '../admin/OrderQueueItem';
+import type {M3OrdersView,M3VehiclesView,M3LocationsView} from '../integrations/member3/types';
+it('maps optional API metadata into order and driver presentation without changing physical data',()=>{
+ const state=acceptedView();state.active_job_id=null;state.accepted_trajectory=null;
+ state.vehicles[0].onboard_order_ids=[];state.vehicles[0].current_load_kg=0;
+ const base={basis:state.basis,current_time:state.current_time,execution_mode:'SIMULATED_REPLAY' as const,real_world_observation:false as const,units:{distance:'m' as const,duration:'s' as const,mass:'kg' as const,money:'VND' as const}};
+ const contact={customerName:'Khách mô phỏng',customerPhone:'0000000001',address:'Địa chỉ hiển thị',notes:'Gọi trước khi giao'};
+ const driver={driverName:'Tài xế mô phỏng',driverPhone:'0000000002',licensePlate:'DEMO-001',vehicleModel:'Xe máy'};
+ const orders:M3OrdersView={...base,schema_version:'saferoute-m3-orders-view/1',orders:[{order_id:'O1',status:'WAITING',owner_vehicle_id:null,planned_in_accepted_suffix:false,unserved_reason:'NO_ACCEPTED_PLAN',demand_kg:1,priority:1,pickup_location_id:'DEPOT',delivery_region_id:'thu-duc',graph_node_id:'2',coordinates:[106.71,10.81],service_time_s:60,earliest:state.current_time,preferred_due:state.current_time,hard_deadline:state.current_time,display:contact}]};
+ const vehicles:M3VehiclesView={...base,schema_version:'saferoute-m3-vehicles-view/1',vehicles:state.vehicles,vehicle_metadata:[{vehicle_id:'V1',vehicle_type:'motorcycle',cost_per_km_vnd:2500,range_m:120000,working_start:state.current_time,working_end:state.current_time,display:driver}]};
+ const locations:M3LocationsView={...base,schema_version:'saferoute-m3-locations-view/1',locations:[{location_id:'DEPOT',kind:'DEPOT',graph_node_id:'1',coordinates:[106.7,10.8],opening_time:state.current_time,closing_time:state.current_time},{location_id:'delivery:O1',kind:'DELIVERY',order_id:'O1',graph_node_id:'2',coordinates:[106.71,10.81]}]};
+ const before=structuredClone(state);
+ const snapshot=mapM3World({session_id:state.basis.session_id,scenario_id:'S0',build_sha256:state.basis.build_sha256,catalog_sha256:'a'.repeat(64),fixture_sha256:'b'.repeat(64)},state,orders,vehicles,locations,'http://localhost');
+ const presentation=dispatchPresentation({},snapshot);
+ expect(presentation.getCustomerInfo('O1')).toMatchObject({name:contact.customerName,phone:contact.customerPhone,address:contact.address,notes:contact.notes});
+ expect(presentation.getDriverInfo('V1')).toMatchObject({name:driver.driverName,phone:driver.driverPhone,licensePlate:driver.licensePlate,vehicleModel:driver.vehicleModel});
+ expect(state).toEqual(before);
+ render(<OrderQueueItem order={snapshot.decisionState.orders[0]} info={presentation.getCustomerInfo('O1')}/>);
+ expect(screen.getByText(contact.address)).toBeInTheDocument();
+ expect(screen.getByText(contact.notes)).toBeInTheDocument();
+});
+it('accepts missing metadata for old files but rejects invalid text fields',()=>{
+ expect(orderDisplay(undefined)).toEqual({});expect(vehicleDisplay({driverName:null})).toEqual({});
+ expect(()=>orderDisplay({customerPhone:123})).toThrow();
+ expect(()=>vehicleDisplay({licensePlate:'x'.repeat(41)})).toThrow();
+ expect(()=>orderDisplay({notes:'\x00'})).toThrow();
+});

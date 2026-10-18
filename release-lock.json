@@ -1,0 +1,9 @@
+{
+    "tag":  "mlai7-20261018",
+    "data_sha256":  "6935bb2cd404b0bc2266c295be5d71d5d18e40486aa0166d4ca99aa066cce4d3",
+    "runtime_url":  "https://github.com/VietNguyen-21/Apex-SafezrouteVN/releases/download/mlai7-20261018/runtime.zip",
+    "app":  "SafeRouteVN_Portable_Win64_20261014",
+    "runtime_sha256":  "9f3e91413b3b0c6918374f95b327fac8cf654db27339210b91d12d7879a05982",
+    "data_url":  "https://huggingface.co/datasets/nguyenviet21/saferoutevn-snapshots/resolve/f13b287a3028832ab7ce0aa1e99b72c6511bd6df/releases/mlai7-20261018/data.zip",
+    "hf_revision":  "f13b287a3028832ab7ce0aa1e99b72c6511bd6df"
+}

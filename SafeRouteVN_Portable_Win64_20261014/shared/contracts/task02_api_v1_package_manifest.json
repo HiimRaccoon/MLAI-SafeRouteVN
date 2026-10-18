@@ -1,0 +1,167 @@
+{
+  "schema_version": "task02-m2-m3m4-package-manifest/1",
+  "contract_versions": [
+    "task02-m2-m3m4-request/1",
+    "task02-m2-m3m4-job/1",
+    "task02-m2-m3m4-decision/1"
+  ],
+  "supersedes_candidate_sha256": "9ee1cc313f0ffa52e97603049036f006d98505106690879a6ab1c61153a1ac2d",
+  "earlier_candidate_sha256": "a9a5c9cd82e2acdeb9f8c3ad9cd793565147d2c06b602f544b328e7bf30107d9",
+  "package_modes": {
+    "portable": "self-contained contract/examples/vectors/test; no optimization or SQLite required",
+    "source_backed": "patch for full TASK-02 tree; requires pinned runs and M1 snapshot"
+  },
+  "projection_run": "API_V1_FINAL_20260930T120010773335Z",
+  "source_runs": [
+    "S0_20260929T174046567846Z",
+    "S1_20260930T043601841406Z",
+    "M1_STATE_20260929T205037621762Z"
+  ],
+  "trusted_manifest_sha256": {
+    "S0": "d7a259215003272fde0b3b0a778998a3a2c46088b7f2469860f43aa9ff01e55b",
+    "S1": "4ba0e8bdb419164f5df8d43148e8e75a04d4d22956ad9b36698168f48c169357",
+    "GATE1": "ecea384ab8867d6465c7248cc5a70578050d4f2253fef2c3d8be5b3852926b31"
+  },
+  "evidence": {
+    "S0_GATE_PASS": true,
+    "S1_VALIDATED_FULL_8_OF_8": true,
+    "GENERAL_M1_NOT_VALIDATED": true,
+    "E4_NOT_RUN": true,
+    "PRODUCTION_CALIBRATION_UNCONFIGURED": true,
+    "S2_S8_SOLVER_NOT_VALIDATED": true
+  },
+  "files": {
+    "docs/task02_m2_m3m4_api_contract_v1.md": {
+      "bytes": 18441,
+      "sha256": "c70a332ffc3e0804a13fb5624c69bb82786f9938de13b453f341f7f1949e29ae"
+    },
+    "optimization/integration/member1_api_contract_projection.py": {
+      "bytes": 18939,
+      "sha256": "4e56881635497b5ded14b99251ea7103e9eb209adedfe59c169e3ed600b0ec50"
+    },
+    "optimization/tests/test_member1_api_contract.py": {
+      "bytes": 18271,
+      "sha256": "33a074df70c0f2d2922b9faf526e717ad4e82fe24d94401918c56d18e47d7c36"
+    },
+    "outputs/member1_api_contract/API_V1_FINAL_20260930T120010773335Z/manifest.json": {
+      "bytes": 3575,
+      "sha256": "79d2e5f6d8455e9b26e817c6b4e3940957066b947dc2a6c7110c016f3b27e907"
+    },
+    "outputs/member1_api_contract/API_V1_FINAL_20260930T120010773335Z/resolved_state_summaries.json": {
+      "bytes": 5823,
+      "sha256": "c4bc276baf8a56fcb2901ccd49d0852697ecc4316514b9adba17e0bec60710e6"
+    },
+    "outputs/member1_api_contract/API_V1_FINAL_20260930T120010773335Z/s0_job.json": {
+      "bytes": 131700,
+      "sha256": "b6a632cda9d7fd6105b42532dcb011057dbfa8cd0544429d78978e1ac0157c85"
+    },
+    "outputs/member1_api_contract/API_V1_FINAL_20260930T120010773335Z/s0_request.json": {
+      "bytes": 463,
+      "sha256": "30b9f048ecff372c4c4ce4eb3f52d9f2beb95cfaf593c94cf2870aaee1c7ebe6"
+    },
+    "outputs/member1_api_contract/API_V1_FINAL_20260930T120010773335Z/s1_job.json": {
+      "bytes": 224195,
+      "sha256": "80950ab50db467988795178529beb9bc3da1016615f17da16cd72fdd04a9def7"
+    },
+    "outputs/member1_api_contract/API_V1_FINAL_20260930T120010773335Z/s1_request.json": {
+      "bytes": 463,
+      "sha256": "197a8000d43144dc5b1384b34895b5378514b3e7f1c884817e56c52ada3a6787"
+    },
+    "outputs/member1_api_contract/API_V1_FINAL_20260930T120010773335Z/s2_job.json": {
+      "bytes": 2742,
+      "sha256": "0f83e41462c118330ee8f540b473145e01a4b919d3ca2558a5b54279d921589f"
+    },
+    "outputs/member1_api_contract/API_V1_FINAL_20260930T120010773335Z/s2_request.json": {
+      "bytes": 464,
+      "sha256": "58beb20619f14bfbcbcb01aecfe10838befe375d52bccd6cc94dacf650ff99e3"
+    },
+    "outputs/member1_api_contract/API_V1_FINAL_20260930T120010773335Z/s3_job.json": {
+      "bytes": 2734,
+      "sha256": "c348fae9ac5d83bd48571a547cf798649e9090e3ca60e28ad3d212e666d1f641"
+    },
+    "outputs/member1_api_contract/API_V1_FINAL_20260930T120010773335Z/s3_request.json": {
+      "bytes": 464,
+      "sha256": "e913e307ded4d2ece58f3a05c9d8a42066b938a40a6e6ba4122fc528966adfa7"
+    },
+    "outputs/member1_api_contract/API_V1_FINAL_20260930T120010773335Z/s4_job.json": {
+      "bytes": 2720,
+      "sha256": "138dfa9c6be2b588946c5dd1c9f8c7aabe42966ad0f2327cb7ddc210b960c6ad"
+    },
+    "outputs/member1_api_contract/API_V1_FINAL_20260930T120010773335Z/s4_request.json": {
+      "bytes": 464,
+      "sha256": "3abc826482c034706bbfb9c92ec04251aae6cfc6325297f5bfe4d9ade5874a66"
+    },
+    "shared/contracts/__init__.py": {
+      "bytes": 64,
+      "sha256": "e5c963cbc7aea792936b0220e5f0b92b706360e0dc501cb2eaf94552d47e6591"
+    },
+    "shared/contracts/examples_v1/lifecycle_jobs.json": {
+      "bytes": 1001,
+      "sha256": "99788e2797060860e0a307993ee14db52e78f5aa709340bd97ed9a7d80ac32e3"
+    },
+    "shared/contracts/examples_v1/resolved_state_summaries.json": {
+      "bytes": 5823,
+      "sha256": "c4bc276baf8a56fcb2901ccd49d0852697ecc4316514b9adba17e0bec60710e6"
+    },
+    "shared/contracts/examples_v1/s0_job.json": {
+      "bytes": 131700,
+      "sha256": "b6a632cda9d7fd6105b42532dcb011057dbfa8cd0544429d78978e1ac0157c85"
+    },
+    "shared/contracts/examples_v1/s0_request.json": {
+      "bytes": 463,
+      "sha256": "30b9f048ecff372c4c4ce4eb3f52d9f2beb95cfaf593c94cf2870aaee1c7ebe6"
+    },
+    "shared/contracts/examples_v1/s1_job.json": {
+      "bytes": 224195,
+      "sha256": "80950ab50db467988795178529beb9bc3da1016615f17da16cd72fdd04a9def7"
+    },
+    "shared/contracts/examples_v1/s1_request.json": {
+      "bytes": 463,
+      "sha256": "197a8000d43144dc5b1384b34895b5378514b3e7f1c884817e56c52ada3a6787"
+    },
+    "shared/contracts/examples_v1/s2_job.json": {
+      "bytes": 2742,
+      "sha256": "0f83e41462c118330ee8f540b473145e01a4b919d3ca2558a5b54279d921589f"
+    },
+    "shared/contracts/examples_v1/s2_request.json": {
+      "bytes": 464,
+      "sha256": "58beb20619f14bfbcbcb01aecfe10838befe375d52bccd6cc94dacf650ff99e3"
+    },
+    "shared/contracts/examples_v1/s3_job.json": {
+      "bytes": 2734,
+      "sha256": "c348fae9ac5d83bd48571a547cf798649e9090e3ca60e28ad3d212e666d1f641"
+    },
+    "shared/contracts/examples_v1/s3_request.json": {
+      "bytes": 464,
+      "sha256": "e913e307ded4d2ece58f3a05c9d8a42066b938a40a6e6ba4122fc528966adfa7"
+    },
+    "shared/contracts/examples_v1/s4_job.json": {
+      "bytes": 2720,
+      "sha256": "138dfa9c6be2b588946c5dd1c9f8c7aabe42966ad0f2327cb7ddc210b960c6ad"
+    },
+    "shared/contracts/examples_v1/s4_request.json": {
+      "bytes": 464,
+      "sha256": "3abc826482c034706bbfb9c92ec04251aae6cfc6325297f5bfe4d9ade5874a66"
+    },
+    "shared/contracts/requirements-test.txt": {
+      "bytes": 33,
+      "sha256": "990976cba5ef886b0c6b68fe8f54c8d0f7c5ea845ccd6fac20c7aaf54311ff76"
+    },
+    "shared/contracts/task02_api_v1_vectors.json": {
+      "bytes": 8891,
+      "sha256": "8c851b74cc4d96ca179a5773f8e69da65b9866bd020c82d458b31a2f8a7e23c4"
+    },
+    "shared/contracts/task02_api_v1.py": {
+      "bytes": 15155,
+      "sha256": "7dff912047378e23fef2751d9e4f97f022e12adade2372f23a48e72bf892f3eb"
+    },
+    "shared/contracts/task02_api_v1.schema.json": {
+      "bytes": 12482,
+      "sha256": "d0a15cbd73fb78acc59e1a258e0570def5de2bf935316932fb5d71f2ecc4bfe8"
+    },
+    "shared/contracts/test_task02_api_v1_portable.py": {
+      "bytes": 7373,
+      "sha256": "f93e4a96b8988c2a4581d89aa8848054f7591192eed27015c11bf923d34b392d"
+    }
+  }
+}
